@@ -90,6 +90,16 @@
 
         <a href="/logout" class="logout-btn">Logout</a>
     </div>
-
 </body>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io('http://localhost:4000');
+    const notificationList = document.getElementById('notificationList');
+    socket.on(`userId-<%=id %>-notification`){
+        let item = document.createElement('li');
+            item.innerHTML = `<b>${notif.title}</b>
+            <p>${notif.body}</p>`;
+            notificationList.append(item);
+        }
+</script>
 </html>
